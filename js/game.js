@@ -4,7 +4,7 @@ const gMine = `<img src = "../images/mine.jpeg>"`
 var gBoard = []
 const gLevel = {
     size: 5,
-    mines: 15
+    mines: 3
 }
 
 
@@ -101,8 +101,23 @@ function createButtons() {
     elContainer.innerHTML = strHTML
 }
 
+function renderMinesSize(size){
+    if (size === 5){
+        gLevel.mines = 3
+    }
+    if (size === 8){
+        gLevel.mines = 14
+    }
+    if (size === 12){
+        gLevel.mines = 32
+    }
+}
+
+
+
 function chooseSize(size) {
     gLevel.size = size
+    renderMinesSize(gLevel.size)
     onInit()
 }
 
@@ -185,7 +200,7 @@ function revealAround(rowIdx, colIdx) {
                 if (!gBoard[i][j].isShown) {
                     gBoard[i][j].isShown = true
                     gGame.shownCount++
-                    revealAround(i,j)
+                    revealAround(i, j)
                 }
             }
         }
@@ -292,14 +307,31 @@ function updateScore() {
     localStorage.scores.push
 }
 
-function renderSafeClicksAttemps(){
+function renderSafeClicksAttemps() {
     const safeClickEl = document.querySelector(".attemps-remaining")
     safeClickEl.innerText = `${gGame.safeClickCount} clicks available`
 }
 
-function safeClick(){
-     
+function safeClick() {
+    if (!gGame.safeClickCount) return
+    var randomI = getRandomIntInclusive(0, gBoard.length - 1)
+    var randomJ = getRandomIntInclusive(0, gBoard.length - 1)
+    while (gBoard[randomI][randomJ].isMine || gBoard[randomI][randomJ].isShown) {
+        randomI = getRandomIntInclusive(0, gBoard.length - 1)
+         randomJ = getRandomIntInclusive(0, gBoard.length - 1)
+   }
+   const cellEl = document.querySelector(`.cell-${randomI}-${randomJ}`)
+   cellEl.classList.add('safe-click')
+   gGame.safeClickCount--
+   renderSafeClicksAttemps()
+   setTimeout(hideSafeClick, 2000, cellEl)
 }
+
+function hideSafeClick(cellEl){
+    cellEl.classList.remove('safe-click')
+}
+
+
 // function bestScore(){
 //     if(gLevel.size === 5){
 //         localStorage.setItem(gGame.score,"")
