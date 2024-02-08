@@ -23,6 +23,4 @@ function randomMines(rowIdx, colIdx) {
         console.log(randomLocationRow, randomLocationCol)
         gBoard[randomLocationRow][randomLocationCol].isMine = true
     }
-    console.table(gBoard)
-    // renderBoard(gBoard)
 }

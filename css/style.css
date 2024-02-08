@@ -8,7 +8,12 @@ h1,h2{
     opacity: 0.8;
     color: #9F8BFF;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 50px;
+    font-size: 45px;
+}
+
+h2{
+    margin-top: 10px;
+    display: inline;
 }
 
 table {
@@ -17,16 +22,17 @@ table {
     margin-top: 20px;
     background-color: rgb(102, 102, 102);
     border: double;
+    margin-bottom: 30px;
 }
 td{
     border: outset 1px rgb(62, 61, 61) ; 
     width: 30px;
     height: 30px;
-
+    background-color: rgb(102, 102, 102);
     
 }
 
-button{
+.lvlsBtns{
     text-align: center;
     padding-top: 20px;
     padding-right: 100px;
@@ -34,9 +40,11 @@ button{
     padding-left: 100px;
     border-radius: 4px;
     background-color: rgb(0, 179, 255);
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-button:hover{
+.lvlsBtns:hover{
     background-color: greenyellow;
     opacity: 0.7;
     transition: 1s;
@@ -55,8 +63,9 @@ button:hover{
 }
 
 .mine{
-    background-image: url("../images/mine.jpeg");
+    background-image: url("../images/mine.png");
     background-size: cover;
+    background-color: grey;
     cursor: not-allowed;
 }
 
@@ -73,7 +82,7 @@ button:hover{
 }
 
 .lives{
-    width: 80px;
+    width: 30px;
     opacity: 0.7;
     padding-left: 10px;
     padding-right: 10px;
@@ -81,4 +90,44 @@ button:hover{
 
 .flag{
     cursor: not-allowed;
+}
+
+.smiley-btn{
+    text-align: center;
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #9F8BFF;
+    cursor: pointer;
+    width: 40px;
+}
+
+.hint {
+   
+    background-color: rgb(3, 177, 50);
+    border: none;
+    
+}
+.hint img{
+    width: 50px;
+    
+}
+
+.hint img:hover{
+    background-color: green;
+    opacity: 0.5;
+    transition: 1s;
+}
+
+.score-container{
+    opacity: 0.8;
+    color: #9F8BFF;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+}
+
+.attemps-remaining{
+    opacity: 0.8;
+    color: #9F8BFF;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 15px;
 }
